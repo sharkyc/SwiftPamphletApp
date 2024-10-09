@@ -27,47 +27,49 @@ struct GuideListView: View {
             }
             .padding(.top, 10)
         }
-        SPOutlineListView(d: listModel.filtered(), c: \.sub) { i in
-            NavigationLink(destination: GuideDetailView(t: i.t, icon: i.icon, plName: "ap", limit: $limit, trigger: $trigger)) {
-                HStack(spacing:3) {
-                    if i.icon.isEmpty == false {
-                        Image(systemName: i.icon)
-                            .foregroundStyle(i.sub == nil ? Color.secondary : .indigo)
-                    } else if i.sub != nil {
-                        Image(systemName: "folder.fill")
-                            .foregroundStyle(.indigo)
+        NavigationStack {
+            SPOutlineListView(d: listModel.filtered(), c: \.sub) { i in
+                NavigationLink(destination: GuideDetailView(t: i.t, icon: i.icon, plName: "ap", limit: $limit, trigger: $trigger)) {
+                    HStack(spacing:3) {
+                        if i.icon.isEmpty == false {
+                            Image(systemName: i.icon)
+                                .foregroundStyle(i.sub == nil ? Color.secondary : .indigo)
+                        } else if i.sub != nil {
+                            Image(systemName: "folder.fill")
+                                .foregroundStyle(.indigo)
+                        }
+                        Text(listModel.searchText.isEmpty == true ? GuideListModel.simpleTitle(i.t) : i.t)
+                        Spacer()
+                        if apBookmarks.contains(i.t) {
+                            Image(systemName: "bookmark")
+                                .foregroundStyle(.secondary)
+                                .font(.footnote)
+                        }
                     }
-                    Text(listModel.searchText.isEmpty == true ? GuideListModel.simpleTitle(i.t) : i.t)
-                    Spacer()
-                    if apBookmarks.contains(i.t) {
-                        Image(systemName: "bookmark")
-                            .foregroundStyle(.secondary)
-                            .font(.footnote)
+                    .contentShape(Rectangle())
+                }
+            }
+            .searchable(text: $listModel.searchText, prompt: "搜索 Apple 技术手册")
+            .listStyle(.sidebar)
+            .onChange(of: trigger, { oldValue, newValue in
+                updateApBookmarks()
+            })
+            .onAppear(perform: {
+                updateApBookmarks()
+                //导出内容
+    //            listModel.buildMDContent()
+                
+            })
+            .overlay {
+                if listModel.filtered().isEmpty {
+                    ContentUnavailableView {
+                        Label("无结果", systemImage: "rectangle.and.text.magnifyingglass")
+                    } description: {
+                        Text("请再次输入")
                     }
                 }
-                .contentShape(Rectangle())
-            }
+            } // end overlay
         }
-        .searchable(text: $listModel.searchText, prompt: "搜索 Apple 技术手册")
-        .listStyle(.sidebar)
-        .onChange(of: trigger, { oldValue, newValue in
-            updateApBookmarks()
-        })
-        .onAppear(perform: {
-            updateApBookmarks()
-            //导出内容
-//            listModel.buildMDContent()
-            
-        })
-        .overlay {
-            if listModel.filtered().isEmpty {
-                ContentUnavailableView {
-                    Label("无结果", systemImage: "rectangle.and.text.magnifyingglass")
-                } description: {
-                    Text("请再次输入")
-                }
-            }
-        } // end overlay
     }
     
     func updateApBookmarks() {
@@ -261,6 +263,7 @@ final class GuideListModel {
         L(t: "SwiftUI",icon: "heart.text.square.fill",sub: [
             L(t: "介绍",sub: [
                 L(t: "SwiftUI是什么"),
+                L(t: "SwiftUI-入门"),
                 L(t: "SwiftUI参考资料"),
                 L(t: "SwiftUI对标的UIKit视图"),
             ]),
@@ -462,10 +465,7 @@ final class GuideListModel {
             L(t: "AppIcon", icon: "app"),
             L(t: "Share Extension", icon: "app")
         ]),
-        L(t: "工程模式",icon: "building.columns", sub: [
-            L(t: "单例"),
-            L(t: "程序入口点", icon: "door.right.hand.open")
-        ]),
+        
         L(t: "多线程", icon: "text.line.first.and.arrowtriangle.forward", sub: [
             L(t: "Swift Concurrency",sub: [
                 L(t: "Swift Concurrency是什么"),
@@ -526,7 +526,7 @@ final class GuideListModel {
             L(t: "网络状态检查"),
             L(t: "WKWebView")
         ]),
-        L(t: "性能和构建",icon: "battery.100percent.bolt", sub: [
+        L(t: "性能优化",icon: "battery.100percent.bolt", sub: [
             L(t: "卡顿监控", sub: [
                 L(t: "避免视图绘制掉帧"),
                 L(t: "卡顿原因"),
@@ -595,19 +595,6 @@ final class GuideListModel {
                 L(t: "Swift运行时"),
                 L(t: "动态库注入技术"),
             ]),
-            L(t: "Bazel", sub: [
-                L(t: "Bazel-介绍"),
-                L(t: "Bazel-生成Xcode工程"),
-                L(t: "Bazel-依赖分析"),
-                L(t: "Bazel-query指令找依赖关系"),
-                L(t: "Bazel-远程执行配置"),
-                L(t: "Bazel-远程缓存配置"),
-                L(t: "Bazel-自定义的构建规则"),
-            ]),
-            L(t: "编辑器", sub: [
-                L(t: "编辑器-三方工具"),
-                L(t: "VSCode"),
-            ]),
             L(t: "性能技术演进"),
             L(t: "链接器"),
         ]),
@@ -624,6 +611,40 @@ final class GuideListModel {
             L(t: "安全-介绍"),
             L(t: "Keychain")
         ]),
+        L(t: "工程架构与构建",icon: "building.columns.fill", sub: [
+            L(t: "架构技术演进"),
+            L(t: "设计模式"),
+            L(t: "包管理工具",sub: [
+                L(t: "包管理工具-介绍"),
+                L(t: "Swift Package Manager"),
+                L(t: "CocoaPods")
+            ]),
+            L(t: "组件化模块化"),
+            L(t: "容器化插件化"),
+            L(t: "跨平台", sub: [
+                L(t: "跨平台-Swift"),
+                L(t: "跨平台-布局渲染"),
+                L(t: "跨平台-大厂自研"),
+                L(t: "跨平台-React Native"),
+            ]),
+            L(t: "编辑器", sub: [
+                L(t: "Xcode"),
+                L(t: "编辑器-三方工具"),
+                L(t: "VSCode"),
+            ]),
+            L(t: "Bazel", sub: [
+                L(t: "Bazel-介绍"),
+                L(t: "Bazel-生成Xcode工程"),
+                L(t: "Bazel-依赖分析"),
+                L(t: "Bazel-query指令找依赖关系"),
+                L(t: "Bazel-远程执行配置"),
+                L(t: "Bazel-远程缓存配置"),
+                L(t: "Bazel-自定义的构建规则"),
+            ]),
+            L(t: "自动化构建流程"),
+            L(t: "单例"),
+            L(t: "程序入口点", icon: "door.right.hand.open"),
+        ]),
         L(t: "macOS", icon: "macstudio", sub: [
 //            L(t: "macOS技术演进"),
             L(t: "macOS范例"),
@@ -632,43 +653,64 @@ final class GuideListModel {
             L(t: "macOS共享菜单"),
             L(t: "macOS剪贴板")
         ]),
-        L(t: "visionOS", icon: "visionpro", sub: [
-            L(t: "visionOS-介绍"),
-            L(t: "visionOS-入门"),
-            L(t: "visionOS-空间设计"),
-            L(t: "空间计算和SwiftUI"),
-            L(t: "RealityKit"),
-            L(t: "Reality Composer Pro"),
-            L(t: "visionOS-Model3D"),
-            L(t: "visionOS-Object Capture"),
-            L(t: "ARKit"),
-            L(t: "Metal"),
-            L(t: "visionOS-Unity"),
-            L(t: "visionOS-系统能力"),
-            L(t: "visionOS-空间视频"),
-            L(t: "visionOS-声音"),
-        ]),
+//        L(t: "visionOS", icon: "visionpro", sub: [
+//            L(t: "visionOS-介绍"),
+//            L(t: "visionOS-入门"),
+//            L(t: "visionOS-空间设计"),
+//            L(t: "空间计算和SwiftUI"),
+//            L(t: "RealityKit"),
+//            L(t: "Reality Composer Pro"),
+//            L(t: "visionOS-Model3D"),
+//            L(t: "visionOS-Object Capture"),
+//            L(t: "ARKit"),
+//            L(t: "Metal"),
+//            L(t: "visionOS-Unity"),
+//            L(t: "visionOS-系统能力"),
+//            L(t: "visionOS-空间视频"),
+//            L(t: "visionOS-声音"),
+//        ]),
+//        L(t: "人工智能", icon:"cpu.fill", sub: [
+//            L(t: "人工智能-介绍"),
+//            L(t: "Apple Intelligence"),
+//            L(t: "Core ML"),
+//            L(t: "人工智能-模型训练"),
+//            L(t: "Create ML"),
+//            L(t: "人工智能-MLX"),
+//            L(t: "人工智能-文本"),
+//            L(t: "人工智能-Translation"),
+//            L(t: "人工智能-Writing Tools"),
+//            L(t: "人工智能-语音"),
+//            L(t: "人工智能-视觉"),
+//            L(t: "人工智能-Metal"),
+//            L(t: "使用LLM模型"),
+//            L(t: "使用三方大模型接口"),
+//            L(t: "Stable Diffusion"),
+//            L(t: "AI辅助开发APP"),
+//            L(t: "用于开发APP的提示词"),
+//            L(t: "人工智能-RAG"),
+//            L(t: "人工智能-技术原理"),
+//        ]),
         L(t: "三方库使用", icon:"tray.2", sub: [
             L(t: "SQLite.swift的使用")
         ]),
-        L(t: "开源", icon:"globe.asia.australia", sub: [
-            L(t: "开源-精品项目"),
-            L(t: "开源-有趣的项目"),
-            L(t: "开源-天气"),
-            L(t: "开源-时间"),
-            L(t: "开源-学习"),
-            L(t: "开源-生活"),
-            L(t: "开源-理财"),
-            L(t: "开源-阅读"),
-            L(t: "开源-笔记"),
-            L(t: "开源-音乐"),
-            L(t: "开源-动画"),
-            L(t: "macOS开源", sub: [
-                L(t: "macOS开源-窗口管理"),
-                L(t: "macOS开源-系统监控"),
-                L(t: "macOS开源-系统清理"),
-            ]),
-        ]),
+//        L(t: "开源", icon:"globe.asia.australia", sub: [
+//            L(t: "开源-精品项目"),
+//            L(t: "开源-有趣的项目"),
+//            L(t: "开源-天气"),
+//            L(t: "开源-时间"),
+//            L(t: "开源-学习"),
+//            L(t: "开源-生活"),
+//            L(t: "开源-理财"),
+//            L(t: "开源-阅读"),
+//            L(t: "开源-笔记"),
+//            L(t: "开源-音乐"),
+//            L(t: "开源-动画"),
+//            L(t: "macOS开源", sub: [
+//                L(t: "macOS开源-窗口管理"),
+//                L(t: "macOS开源-系统监控"),
+//                L(t: "macOS开源-系统清理"),
+//            ]),
+//        ]),
         L(t: "知识管理", icon:"lightbulb.max", sub: [
             L(t: "知识管理-介绍"),
             L(t: "怎么用小册子APP做知识管理"),
@@ -686,15 +728,13 @@ final class GuideListModel {
             L(t: "知识管理-目的导向工作流"),
         ])
     ]
-    
-    struct L: Hashable, Identifiable {
-        var id = UUID()
-        var t: String
-        var icon: String = ""
-        var sub: [L]?
-    }
 
 }
 
-
+struct L: Hashable, Identifiable {
+    var id = UUID()
+    var t: String
+    var icon: String = ""
+    var sub: [L]?
+}
 

@@ -298,7 +298,6 @@ struct EditInfoView: View {
     private func textAndPreviewView() -> some View {
         TextEditor(text: $info.des).border()
             .padding(10)
-            .contentMargins(.all, 30, for: .scrollContent)
             .tabItem { Label("文本", systemImage: "circle") }
             .tag(1)
 //        WebUIView(html: wrapperHtmlContent(content: MarkdownParser().html(from: info.des)), baseURLStr: "")
@@ -349,6 +348,7 @@ struct EditInfoView: View {
                                             showSheet = false
                                             info.des = "[\(oneTerm)]" + "\n" + info.des
                                         }
+                                        .fixedSize()
                                     }
                                 }
                                 Spacer()
@@ -461,6 +461,7 @@ struct EditInfoView: View {
                 Image(systemName: isShowRelateTextField == true ? "network.slash" : "network")
             }
             .help("关联编辑")
+            .keyboardShortcut(KeyEquivalent("r"), modifiers: .command)
         }
     }
 

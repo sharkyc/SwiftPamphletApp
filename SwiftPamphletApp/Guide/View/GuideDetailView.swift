@@ -11,6 +11,7 @@ import SMFile
 import SMDate
 import SwiftData
 import InfoOrganizer
+import MarkdownUI
 
 struct GuideDetailView: View {
     @Environment(\.modelContext) var modelContext
@@ -19,6 +20,7 @@ struct GuideDetailView: View {
     var t: String
     var icon: String
     var plName: String
+    @State var tContent: String
     @Binding var limit: Int
     @Binding var trigger: Bool
     
@@ -32,10 +34,11 @@ struct GuideDetailView: View {
         self.t = t
         self.icon = icon
         self.plName = plName
+        self.tContent = ""
         self._trigger = trigger
         var fd = FetchDescriptor<IOInfo>(predicate: #Predicate { info in
-            info.relateName == t && info.isArchived == false
-        }, sortBy: [SortDescriptor(\IOInfo.updateDate, order: .reverse)])
+            info.relateName == t
+        }, sortBy: [SortDescriptor(\IOInfo.isArchived, order: .forward),SortDescriptor(\IOInfo.updateDate, order: .reverse)])
         fd.fetchLimit = limit.wrappedValue
         _infos = Query(fd)
         self._limit = limit
@@ -82,7 +85,7 @@ struct GuideDetailView: View {
                 }
                 .padding(EdgeInsets(top: 10, leading: 10, bottom: 2, trailing: 10))
                 // 内容
-                WebUIView(html: wrapperHtmlContent(content: MarkdownParser().html(from: "\(SMFile.loadBundleString("\(t)" + "(\(plName)).md"))")), baseURLStr: "")
+                WebUIView(html: tContent, baseURLStr: "")
             } else {
                 if let info = selectInfo {
                     EditInfoView(info: info)
@@ -131,13 +134,18 @@ struct GuideDetailView: View {
         }
         .onAppear {
             isShowInspector = asIsShowPamphletInspector
+            let md = SMFile.loadBundleString("\(t)" + "(\(plName)).md")
+            tContent = wrapperHtmlContent(content: MarkdownParser().html(from: md))
         }
         .onChange(of: t) { oldValue, newValue in
             selectInfo = nil
+            let md = SMFile.loadBundleString("\(t)" + "(\(plName)).md")
+            tContent = wrapperHtmlContent(content: MarkdownParser().html(from: md))
         }
         .onChange(of: isShowInspector) { oldValue, newValue in
             asIsShowPamphletInspector = newValue
         }
+
     }
     
     func checkBookmarkState() {

@@ -20,22 +20,31 @@ struct InfosView: View {
     
     init(filterCateName: String = "", searchString: String = "", selectInfo: Binding<IOInfo?>, sortOrder: [SortDescriptor<IOInfo>] = [], limit: Binding<Int>) {
         
-        var fd = FetchDescriptor<IOInfo>(predicate: #Predicate { info in
-            if !filterCateName.isEmpty && !searchString.isEmpty {
+        var fd:FetchDescriptor<IOInfo>
+        if searchString.isEmpty == false && filterCateName.isEmpty == false {
+            fd = FetchDescriptor<IOInfo>(predicate: #Predicate { info in
                 (info.name.localizedStandardContains(searchString)
                 || info.url.localizedStandardContains(searchString)
+                 || info.relateName.localizedStandardContains(searchString)
                  || info.des.localizedStandardContains(searchString)) && info.category?.name == filterCateName
-            } else if !filterCateName.isEmpty {
-                info.category?.name == filterCateName
-            } else if searchString.isEmpty {
-                true
-            } else {
+            }, sortBy: sortOrder)
+        } else if searchString.isEmpty == false {
+            fd = FetchDescriptor<IOInfo>(predicate: #Predicate { info in
                 info.name.localizedStandardContains(searchString)
                 || info.url.localizedStandardContains(searchString)
+                || info.relateName.localizedStandardContains(searchString)
                  || info.des.localizedStandardContains(searchString)
-            }
+            }, sortBy: sortOrder)
+        } else if filterCateName.isEmpty == false {
+            fd = FetchDescriptor<IOInfo>(predicate: #Predicate { info in
+                info.category?.name == filterCateName
+            }, sortBy: sortOrder)
+        } else {
+            fd = FetchDescriptor<IOInfo>(predicate: #Predicate { info in
+                true
+            }, sortBy: sortOrder)
             
-        }, sortBy: sortOrder)
+        }
         
         // 测试无数据用
 //        var fd = FetchDescriptor<IOInfo>(predicate: #Predicate { info in

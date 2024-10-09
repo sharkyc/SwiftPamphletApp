@@ -31,6 +31,16 @@
 		0832668B2C97232E00E27CC5 /* visionOS-声音(ap).md in Resources */ = {isa = PBXBuildFile; fileRef = 0832668A2C97232E00E27CC5 /* visionOS-声音(ap).md */; };
 		0832668D2C97238C00E27CC5 /* visionOS-Unity(ap).md in Resources */ = {isa = PBXBuildFile; fileRef = 0832668C2C97238C00E27CC5 /* visionOS-Unity(ap).md */; };
 		0832668F2C972F5800E27CC5 /* 开源-音乐(ap).md in Resources */ = {isa = PBXBuildFile; fileRef = 0832668E2C972F5800E27CC5 /* 开源-音乐(ap).md */; };
+		083266922C97E51400E27CC5 /* 人工智能-介绍(ap).md in Resources */ = {isa = PBXBuildFile; fileRef = 083266912C97E51400E27CC5 /* 人工智能-介绍(ap).md */; };
+		083266942C97E52700E27CC5 /* Core ML(ap).md in Resources */ = {isa = PBXBuildFile; fileRef = 083266932C97E52700E27CC5 /* Core ML(ap).md */; };
+		083266962C97E5FF00E27CC5 /* Create ML(ap).md in Resources */ = {isa = PBXBuildFile; fileRef = 083266952C97E5FF00E27CC5 /* Create ML(ap).md */; };
+		083266982C97E62F00E27CC5 /* 人工智能-语音(ap).md in Resources */ = {isa = PBXBuildFile; fileRef = 083266972C97E62F00E27CC5 /* 人工智能-语音(ap).md */; };
+		0832669A2C97E64700E27CC5 /* 人工智能-视觉(ap).md in Resources */ = {isa = PBXBuildFile; fileRef = 083266992C97E64700E27CC5 /* 人工智能-视觉(ap).md */; };
+		0832669C2C97E65A00E27CC5 /* 人工智能-Metal(ap).md in Resources */ = {isa = PBXBuildFile; fileRef = 0832669B2C97E65A00E27CC5 /* 人工智能-Metal(ap).md */; };
+		0832669E2C97E67A00E27CC5 /* Stable Diffusion(ap).md in Resources */ = {isa = PBXBuildFile; fileRef = 0832669D2C97E67A00E27CC5 /* Stable Diffusion(ap).md */; };
+		083266A22C987A0700E27CC5 /* AI辅助开发APP(ap).md in Resources */ = {isa = PBXBuildFile; fileRef = 083266A12C987A0700E27CC5 /* AI辅助开发APP(ap).md */; };
+		083266A42C987D9000E27CC5 /* macOS开源-菜单栏(ap).md in Resources */ = {isa = PBXBuildFile; fileRef = 083266A32C987D9000E27CC5 /* macOS开源-菜单栏(ap).md */; };
+		083266A62C9888E900E27CC5 /* SwiftUI-入门(ap).md in Resources */ = {isa = PBXBuildFile; fileRef = 083266A52C9888E900E27CC5 /* SwiftUI-入门(ap).md */; };
 		08397E252B9EEE1300DFDD02 /* InfoListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08397E242B9EEE1300DFDD02 /* InfoListView.swift */; };
 		08397E292B9F0A9100DFDD02 /* EditInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08397E282B9F0A9100DFDD02 /* EditInfoView.swift */; };
 		08397E2D2B9F10AD00DFDD02 /* EditCategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08397E2C2B9F10AD00DFDD02 /* EditCategoryView.swift */; };
@@ -166,6 +176,25 @@
 		087A7B062C8339CD00321F85 /* 避免视图绘制掉帧(ap).md in Resources */ = {isa = PBXBuildFile; fileRef = 087A7B052C8339CD00321F85 /* 避免视图绘制掉帧(ap).md */; };
 		087A7B092C83737E00321F85 /* Bazel-介绍(ap).md in Resources */ = {isa = PBXBuildFile; fileRef = 087A7B082C83737E00321F85 /* Bazel-介绍(ap).md */; };
 		087A7B0C2C8407E200321F85 /* Bazel-依赖分析(ap).md in Resources */ = {isa = PBXBuildFile; fileRef = 087A7B0B2C8407E200321F85 /* Bazel-依赖分析(ap).md */; };
+		087AAA732C9A6C9B00877650 /* 架构技术演进(ap).md in Resources */ = {isa = PBXBuildFile; fileRef = 087AAA722C9A6C9B00877650 /* 架构技术演进(ap).md */; };
+		087AAA772C9A6E0800877650 /* 单例(ap).md in Resources */ = {isa = PBXBuildFile; fileRef = 087AAA762C9A6E0800877650 /* 单例(ap).md */; };
+		087AAA792C9A6E6000877650 /* 程序入口点(ap).md in Resources */ = {isa = PBXBuildFile; fileRef = 087AAA782C9A6E6000877650 /* 程序入口点(ap).md */; };
+		087AAA842C9A718D00877650 /* Swift Package Manager(ap).md in Resources */ = {isa = PBXBuildFile; fileRef = 087AAA832C9A718D00877650 /* Swift Package Manager(ap).md */; };
+		087AAA862C9A71D700877650 /* 包管理工具-介绍(ap).md in Resources */ = {isa = PBXBuildFile; fileRef = 087AAA852C9A71D700877650 /* 包管理工具-介绍(ap).md */; };
+		087AAA882C9A768200877650 /* 组件化模块化(ap).md in Resources */ = {isa = PBXBuildFile; fileRef = 087AAA872C9A768200877650 /* 组件化模块化(ap).md */; };
+		087AAA8A2C9A771C00877650 /* 设计模式(ap).md in Resources */ = {isa = PBXBuildFile; fileRef = 087AAA892C9A771C00877650 /* 设计模式(ap).md */; };
+		087AAA8C2C9A7D9400877650 /* 容器化插件化(ap).md in Resources */ = {isa = PBXBuildFile; fileRef = 087AAA8B2C9A7D9400877650 /* 容器化插件化(ap).md */; };
+		087AAA8F2C9AAB5600877650 /* 跨平台-Swift(ap).md in Resources */ = {isa = PBXBuildFile; fileRef = 087AAA8E2C9AAB5600877650 /* 跨平台-Swift(ap).md */; };
+		087AAA912C9AAB6C00877650 /* 跨平台-布局渲染(ap).md in Resources */ = {isa = PBXBuildFile; fileRef = 087AAA902C9AAB6C00877650 /* 跨平台-布局渲染(ap).md */; };
+		087AAA932C9AAB7F00877650 /* 跨平台-大厂自研(ap).md in Resources */ = {isa = PBXBuildFile; fileRef = 087AAA922C9AAB7F00877650 /* 跨平台-大厂自研(ap).md */; };
+		087AAA952C9AAB9200877650 /* 跨平台-React Native(ap).md in Resources */ = {isa = PBXBuildFile; fileRef = 087AAA942C9AAB9200877650 /* 跨平台-React Native(ap).md */; };
+		087AAA972C9AAEA100877650 /* 自动化构建流程(ap).md in Resources */ = {isa = PBXBuildFile; fileRef = 087AAA962C9AAEA100877650 /* 自动化构建流程(ap).md */; };
+		087AAA992C9AB23C00877650 /* Xcode(ap).md in Resources */ = {isa = PBXBuildFile; fileRef = 087AAA982C9AB23C00877650 /* Xcode(ap).md */; };
+		087AAA9B2C9AB32800877650 /* CocoaPods(ap).md in Resources */ = {isa = PBXBuildFile; fileRef = 087AAA9A2C9AB32800877650 /* CocoaPods(ap).md */; };
+		087AAA9D2C9ABEFB00877650 /* 人工智能-文本(ap).md in Resources */ = {isa = PBXBuildFile; fileRef = 087AAA9C2C9ABEFB00877650 /* 人工智能-文本(ap).md */; };
+		087AAA9F2C9AC1E200877650 /* 使用LLM模型(ap).md in Resources */ = {isa = PBXBuildFile; fileRef = 087AAA9E2C9AC1E200877650 /* 使用LLM模型(ap).md */; };
+		087AAAA12C9C0EEA00877650 /* 人工智能-Translation(ap).md in Resources */ = {isa = PBXBuildFile; fileRef = 087AAAA02C9C0EEA00877650 /* 人工智能-Translation(ap).md */; };
+		087AAAA32C9C0F0B00877650 /* 人工智能-Writing Tools(ap).md in Resources */ = {isa = PBXBuildFile; fileRef = 087AAAA22C9C0F0B00877650 /* 人工智能-Writing Tools(ap).md */; };
 		0887A59A2BA28F6D00131359 /* CSGuideView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0887A5992BA28F6D00131359 /* CSGuideView.swift */; };
 		0888EF752C1C280F004967AD /* AVKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0869233F2BF2BF81006779A3 /* AVKit.framework */; };
 		088F2C222C87F9A700DCA64F /* IO性能-文件读写(ap).md in Resources */ = {isa = PBXBuildFile; fileRef = 088F2C212C87F9A700DCA64F /* IO性能-文件读写(ap).md */; };
@@ -231,8 +260,6 @@
 		08BDD5202C6B007A00914412 /* Swift Concurrency是什么(ap).md in Resources */ = {isa = PBXBuildFile; fileRef = 08BDD41F2C6B007A00914412 /* Swift Concurrency是什么(ap).md */; };
 		08BDD5212C6B007A00914412 /* Swift Concurrency相关提案(ap).md in Resources */ = {isa = PBXBuildFile; fileRef = 08BDD4202C6B007A00914412 /* Swift Concurrency相关提案(ap).md */; };
 		08BDD5222C6B007A00914412 /* Swift Concurrency学习路径(ap).md in Resources */ = {isa = PBXBuildFile; fileRef = 08BDD4212C6B007A00914412 /* Swift Concurrency学习路径(ap).md */; };
-		08BDD5232C6B007A00914412 /* 程序入口点(ap).md in Resources */ = {isa = PBXBuildFile; fileRef = 08BDD4242C6B007A00914412 /* 程序入口点(ap).md */; };
-		08BDD5242C6B007A00914412 /* 单例(ap).md in Resources */ = {isa = PBXBuildFile; fileRef = 08BDD4252C6B007A00914412 /* 单例(ap).md */; };
 		08BDD5252C6B007A00914412 /* 格式化-度量值(ap).md in Resources */ = {isa = PBXBuildFile; fileRef = 08BDD4272C6B007A00914412 /* 格式化-度量值(ap).md */; };
 		08BDD5262C6B007A00914412 /* 格式化-生活日常(ap).md in Resources */ = {isa = PBXBuildFile; fileRef = 08BDD4282C6B007A00914412 /* 格式化-生活日常(ap).md */; };
 		08BDD5282C6B007A00914412 /* 格式化-数据(ap).md in Resources */ = {isa = PBXBuildFile; fileRef = 08BDD42A2C6B007A00914412 /* 格式化-数据(ap).md */; };
@@ -487,6 +514,16 @@
 		0832668A2C97232E00E27CC5 /* visionOS-声音(ap).md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "visionOS-声音(ap).md"; sourceTree = "<group>"; };
 		0832668C2C97238C00E27CC5 /* visionOS-Unity(ap).md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "visionOS-Unity(ap).md"; sourceTree = "<group>"; };
 		0832668E2C972F5800E27CC5 /* 开源-音乐(ap).md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "开源-音乐(ap).md"; sourceTree = "<group>"; };
+		083266912C97E51400E27CC5 /* 人工智能-介绍(ap).md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "人工智能-介绍(ap).md"; sourceTree = "<group>"; };
+		083266932C97E52700E27CC5 /* Core ML(ap).md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "Core ML(ap).md"; sourceTree = "<group>"; };
+		083266952C97E5FF00E27CC5 /* Create ML(ap).md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "Create ML(ap).md"; sourceTree = "<group>"; };
+		083266972C97E62F00E27CC5 /* 人工智能-语音(ap).md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "人工智能-语音(ap).md"; sourceTree = "<group>"; };
+		083266992C97E64700E27CC5 /* 人工智能-视觉(ap).md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "人工智能-视觉(ap).md"; sourceTree = "<group>"; };
+		0832669B2C97E65A00E27CC5 /* 人工智能-Metal(ap).md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "人工智能-Metal(ap).md"; sourceTree = "<group>"; };
+		0832669D2C97E67A00E27CC5 /* Stable Diffusion(ap).md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "Stable Diffusion(ap).md"; sourceTree = "<group>"; };
+		083266A12C987A0700E27CC5 /* AI辅助开发APP(ap).md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "AI辅助开发APP(ap).md"; sourceTree = "<group>"; };
+		083266A32C987D9000E27CC5 /* macOS开源-菜单栏(ap).md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "macOS开源-菜单栏(ap).md"; sourceTree = "<group>"; };
+		083266A52C9888E900E27CC5 /* SwiftUI-入门(ap).md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "SwiftUI-入门(ap).md"; sourceTree = "<group>"; };
 		08397E242B9EEE1300DFDD02 /* InfoListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoListView.swift; sourceTree = "<group>"; };
 		08397E282B9F0A9100DFDD02 /* EditInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditInfoView.swift; sourceTree = "<group>"; };
 		08397E2C2B9F10AD00DFDD02 /* EditCategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditCategoryView.swift; sourceTree = "<group>"; };
@@ -623,6 +660,25 @@
 		087A7B052C8339CD00321F85 /* 避免视图绘制掉帧(ap).md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "避免视图绘制掉帧(ap).md"; sourceTree = "<group>"; };
 		087A7B082C83737E00321F85 /* Bazel-介绍(ap).md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "Bazel-介绍(ap).md"; sourceTree = "<group>"; };
 		087A7B0B2C8407E200321F85 /* Bazel-依赖分析(ap).md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "Bazel-依赖分析(ap).md"; sourceTree = "<group>"; };
+		087AAA722C9A6C9B00877650 /* 架构技术演进(ap).md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "架构技术演进(ap).md"; sourceTree = "<group>"; };
+		087AAA762C9A6E0800877650 /* 单例(ap).md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "单例(ap).md"; sourceTree = "<group>"; };
+		087AAA782C9A6E6000877650 /* 程序入口点(ap).md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "程序入口点(ap).md"; sourceTree = "<group>"; };
+		087AAA832C9A718D00877650 /* Swift Package Manager(ap).md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "Swift Package Manager(ap).md"; sourceTree = "<group>"; };
+		087AAA852C9A71D700877650 /* 包管理工具-介绍(ap).md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "包管理工具-介绍(ap).md"; sourceTree = "<group>"; };
+		087AAA872C9A768200877650 /* 组件化模块化(ap).md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "组件化模块化(ap).md"; sourceTree = "<group>"; };
+		087AAA892C9A771C00877650 /* 设计模式(ap).md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "设计模式(ap).md"; sourceTree = "<group>"; };
+		087AAA8B2C9A7D9400877650 /* 容器化插件化(ap).md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "容器化插件化(ap).md"; sourceTree = "<group>"; };
+		087AAA8E2C9AAB5600877650 /* 跨平台-Swift(ap).md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "跨平台-Swift(ap).md"; sourceTree = "<group>"; };
+		087AAA902C9AAB6C00877650 /* 跨平台-布局渲染(ap).md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "跨平台-布局渲染(ap).md"; sourceTree = "<group>"; };
+		087AAA922C9AAB7F00877650 /* 跨平台-大厂自研(ap).md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "跨平台-大厂自研(ap).md"; sourceTree = "<group>"; };
+		087AAA942C9AAB9200877650 /* 跨平台-React Native(ap).md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "跨平台-React Native(ap).md"; sourceTree = "<group>"; };
+		087AAA962C9AAEA100877650 /* 自动化构建流程(ap).md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "自动化构建流程(ap).md"; sourceTree = "<group>"; };
+		087AAA982C9AB23C00877650 /* Xcode(ap).md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "Xcode(ap).md"; sourceTree = "<group>"; };
+		087AAA9A2C9AB32800877650 /* CocoaPods(ap).md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "CocoaPods(ap).md"; sourceTree = "<group>"; };
+		087AAA9C2C9ABEFB00877650 /* 人工智能-文本(ap).md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "人工智能-文本(ap).md"; sourceTree = "<group>"; };
+		087AAA9E2C9AC1E200877650 /* 使用LLM模型(ap).md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "使用LLM模型(ap).md"; sourceTree = "<group>"; };
+		087AAAA02C9C0EEA00877650 /* 人工智能-Translation(ap).md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "人工智能-Translation(ap).md"; sourceTree = "<group>"; };
+		087AAAA22C9C0F0B00877650 /* 人工智能-Writing Tools(ap).md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "人工智能-Writing Tools(ap).md"; sourceTree = "<group>"; };
 		0887A5992BA28F6D00131359 /* CSGuideView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CSGuideView.swift; sourceTree = "<group>"; };
 		088F2C212C87F9A700DCA64F /* IO性能-文件读写(ap).md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "IO性能-文件读写(ap).md"; sourceTree = "<group>"; };
 		088F2C232C87FDFE00DCA64F /* IO性能-文件缓存(ap).md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "IO性能-文件缓存(ap).md"; sourceTree = "<group>"; };
@@ -687,8 +743,6 @@
 		08BDD41F2C6B007A00914412 /* Swift Concurrency是什么(ap).md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = "Swift Concurrency是什么(ap).md"; sourceTree = "<group>"; };
 		08BDD4202C6B007A00914412 /* Swift Concurrency相关提案(ap).md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = "Swift Concurrency相关提案(ap).md"; sourceTree = "<group>"; };
 		08BDD4212C6B007A00914412 /* Swift Concurrency学习路径(ap).md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = "Swift Concurrency学习路径(ap).md"; sourceTree = "<group>"; };
-		08BDD4242C6B007A00914412 /* 程序入口点(ap).md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = "程序入口点(ap).md"; sourceTree = "<group>"; };
-		08BDD4252C6B007A00914412 /* 单例(ap).md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = "单例(ap).md"; sourceTree = "<group>"; };
 		08BDD4272C6B007A00914412 /* 格式化-度量值(ap).md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = "格式化-度量值(ap).md"; sourceTree = "<group>"; };
 		08BDD4282C6B007A00914412 /* 格式化-生活日常(ap).md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = "格式化-生活日常(ap).md"; sourceTree = "<group>"; };
 		08BDD42A2C6B007A00914412 /* 格式化-数据(ap).md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = "格式化-数据(ap).md"; sourceTree = "<group>"; };
@@ -937,6 +991,7 @@
 		0832666A2C96A2E400E27CC5 /* macOS开源 */ = {
 			isa = PBXGroup;
 			children = (
+				083266A32C987D9000E27CC5 /* macOS开源-菜单栏(ap).md */,
 				0832666B2C96A34100E27CC5 /* macOS开源-窗口管理(ap).md */,
 				0832666D2C96A36700E27CC5 /* macOS开源-系统监控(ap).md */,
 				0832666F2C96A37900E27CC5 /* macOS开源-系统清理(ap).md */,
@@ -963,6 +1018,25 @@
 				0832668A2C97232E00E27CC5 /* visionOS-声音(ap).md */,
 			);
 			path = visionOS;
+			sourceTree = "<group>";
+		};
+		083266902C97E4F200E27CC5 /* 人工智能 */ = {
+			isa = PBXGroup;
+			children = (
+				083266912C97E51400E27CC5 /* 人工智能-介绍(ap).md */,
+				083266932C97E52700E27CC5 /* Core ML(ap).md */,
+				083266952C97E5FF00E27CC5 /* Create ML(ap).md */,
+				087AAA9C2C9ABEFB00877650 /* 人工智能-文本(ap).md */,
+				087AAAA02C9C0EEA00877650 /* 人工智能-Translation(ap).md */,
+				087AAAA22C9C0F0B00877650 /* 人工智能-Writing Tools(ap).md */,
+				083266972C97E62F00E27CC5 /* 人工智能-语音(ap).md */,
+				083266992C97E64700E27CC5 /* 人工智能-视觉(ap).md */,
+				0832669B2C97E65A00E27CC5 /* 人工智能-Metal(ap).md */,
+				087AAA9E2C9AC1E200877650 /* 使用LLM模型(ap).md */,
+				0832669D2C97E67A00E27CC5 /* Stable Diffusion(ap).md */,
+				083266A12C987A0700E27CC5 /* AI辅助开发APP(ap).md */,
+			);
+			path = "人工智能";
 			sourceTree = "<group>";
 		};
 		08397E212B9EE83F00DFDD02 /* InfoOrganizer */ = {
@@ -1131,6 +1205,7 @@
 		0851E53B2C85CA7C00D9463A /* 编辑器 */ = {
 			isa = PBXGroup;
 			children = (
+				087AAA982C9AB23C00877650 /* Xcode(ap).md */,
 				0851E53C2C85CAA400D9463A /* 编辑器-三方工具(ap).md */,
 				0851E53E2C85CC8000D9463A /* VSCode(ap).md */,
 			);
@@ -1160,17 +1235,18 @@
 				08BDD46E2C6B007A00914412 /* SwiftData */,
 				08BDD4572C6B007A00914412 /* 小组件 */,
 				08BDD4482C6B007A00914412 /* 系统能力 */,
-				08BDD4262C6B007A00914412 /* 工程模式 */,
 				08BDD4232C6B007A00914412 /* 多线程 */,
 				084DBA0D2C6D06AC00C9D88D /* 图片处理 */,
 				08BDD4002C6B007A00914412 /* 动画 */,
 				08BDD4452C6B007A00914412 /* 网络 */,
-				08BDD45C2C6B007A00914412 /* 性能和构建 */,
+				08BDD45C2C6B007A00914412 /* 性能优化 */,
 				0851E5512C86781E00D9463A /* 调试 */,
 				0851E54C2C865AF600D9463A /* 测试 */,
 				08BDD3F62C6B007A00914412 /* 安全 */,
+				08BDD4262C6B007A00914412 /* 工程架构与构建 */,
 				08BDD4632C6B007A00914412 /* macOS */,
 				083266712C96BEDC00E27CC5 /* visionOS */,
+				083266902C97E4F200E27CC5 /* 人工智能 */,
 				08BDD4432C6B007A00914412 /* 三方库使用 */,
 				08F0F8AD2C958FD400DC659B /* 开源 */,
 				088F2C302C93263800DCA64F /* 知识管理 */,
@@ -1398,6 +1474,27 @@
 			path = Bazel;
 			sourceTree = "<group>";
 		};
+		087AAA812C9A716700877650 /* 包管理工具 */ = {
+			isa = PBXGroup;
+			children = (
+				087AAA852C9A71D700877650 /* 包管理工具-介绍(ap).md */,
+				087AAA832C9A718D00877650 /* Swift Package Manager(ap).md */,
+				087AAA9A2C9AB32800877650 /* CocoaPods(ap).md */,
+			);
+			path = "包管理工具";
+			sourceTree = "<group>";
+		};
+		087AAA8D2C9AAA3100877650 /* 跨平台 */ = {
+			isa = PBXGroup;
+			children = (
+				087AAA8E2C9AAB5600877650 /* 跨平台-Swift(ap).md */,
+				087AAA902C9AAB6C00877650 /* 跨平台-布局渲染(ap).md */,
+				087AAA922C9AAB7F00877650 /* 跨平台-大厂自研(ap).md */,
+				087AAA942C9AAB9200877650 /* 跨平台-React Native(ap).md */,
+			);
+			path = "跨平台";
+			sourceTree = "<group>";
+		};
 		0887A5982BA28F3600131359 /* Guide */ = {
 			isa = PBXGroup;
 			children = (
@@ -1558,13 +1655,22 @@
 			path = "多线程";
 			sourceTree = "<group>";
 		};
-		08BDD4262C6B007A00914412 /* 工程模式 */ = {
+		08BDD4262C6B007A00914412 /* 工程架构与构建 */ = {
 			isa = PBXGroup;
 			children = (
-				08BDD4242C6B007A00914412 /* 程序入口点(ap).md */,
-				08BDD4252C6B007A00914412 /* 单例(ap).md */,
+				087AAA722C9A6C9B00877650 /* 架构技术演进(ap).md */,
+				087AAA892C9A771C00877650 /* 设计模式(ap).md */,
+				087AAA812C9A716700877650 /* 包管理工具 */,
+				087AAA872C9A768200877650 /* 组件化模块化(ap).md */,
+				087AAA8B2C9A7D9400877650 /* 容器化插件化(ap).md */,
+				087AAA8D2C9AAA3100877650 /* 跨平台 */,
+				0851E53B2C85CA7C00D9463A /* 编辑器 */,
+				087AAA962C9AAEA100877650 /* 自动化构建流程(ap).md */,
+				087A7B0A2C83776C00321F85 /* Bazel */,
+				087AAA762C9A6E0800877650 /* 单例(ap).md */,
+				087AAA782C9A6E6000877650 /* 程序入口点(ap).md */,
 			);
-			path = "工程模式";
+			path = "工程架构与构建";
 			sourceTree = "<group>";
 		};
 		08BDD42B2C6B007A00914412 /* 格式化 */ = {
@@ -1676,7 +1782,7 @@
 			path = "小组件";
 			sourceTree = "<group>";
 		};
-		08BDD45C2C6B007A00914412 /* 性能和构建 */ = {
+		08BDD45C2C6B007A00914412 /* 性能优化 */ = {
 			isa = PBXGroup;
 			children = (
 				087A7AF92C816AC300321F85 /* 卡顿监控 */,
@@ -1689,12 +1795,10 @@
 				087A7B002C82904B00321F85 /* 性能分析 */,
 				0851E5402C85E20000D9463A /* 静态分析 */,
 				087A7AEF2C80C7D200321F85 /* 动态性 */,
-				087A7B0A2C83776C00321F85 /* Bazel */,
-				0851E53B2C85CA7C00D9463A /* 编辑器 */,
 				08BDD4592C6B007A00914412 /* 链接器(ap).md */,
 				08BDD45B2C6B007A00914412 /* 性能技术演进(ap).md */,
 			);
-			path = "性能和构建";
+			path = "性能优化";
 			sourceTree = "<group>";
 		};
 		08BDD4632C6B007A00914412 /* macOS */ = {
@@ -1830,9 +1934,10 @@
 		08BDD4A62C6B007A00914412 /* 介绍 */ = {
 			isa = PBXGroup;
 			children = (
+				08BDD4A52C6B007A00914412 /* SwiftUI是什么(ap).md */,
+				083266A52C9888E900E27CC5 /* SwiftUI-入门(ap).md */,
 				08BDD4A32C6B007A00914412 /* SwiftUI参考资料(ap).md */,
 				08BDD4A42C6B007A00914412 /* SwiftUI对标的UIKit视图(ap).md */,
-				08BDD4A52C6B007A00914412 /* SwiftUI是什么(ap).md */,
 			);
 			path = "介绍";
 			sourceTree = "<group>";
@@ -1993,10 +2098,10 @@
 		08BDD4FA2C6B007A00914412 /* SwiftUI */ = {
 			isa = PBXGroup;
 			children = (
+				08BDD4A62C6B007A00914412 /* 介绍 */,
 				08BDD47B2C6B007A00914412 /* 表单 */,
 				08BDD4992C6B007A00914412 /* 布局组件 */,
 				08BDD4A22C6B007A00914412 /* 浮层组件 */,
-				08BDD4A62C6B007A00914412 /* 介绍 */,
 				08BDD4B22C6B007A00914412 /* 视觉 */,
 				08BDD4C02C6B007A00914412 /* 视图协议 */,
 				08BDD4C62C6B007A00914412 /* 视图组件 */,
@@ -2227,7 +2332,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1310;
-				LastUpgradeCheck = 1320;
+				LastUpgradeCheck = 1600;
 				TargetAttributes = {
 					086A5F022744E88E00FECE02 = {
 						CreatedOnToolsVersion = 13.1;
@@ -2281,6 +2386,7 @@
 				083266892C9722DD00E27CC5 /* Reality Composer Pro(ap).md in Resources */,
 				08BDD5182C6B007A00914412 /* zip(ap).md in Resources */,
 				084E1A6327B517FC0072BBB6 /* Swift各版本演进(ap).md in Resources */,
+				087AAA8F2C9AAB5600877650 /* 跨平台-Swift(ap).md in Resources */,
 				08BDD5702C6B007A00914412 /* 布局-offset偏移(ap).md in Resources */,
 				08448FA3279EBB1B00B61353 /* 数字(ap).md in Resources */,
 				08BDD58A2C6B007A00914412 /* HUD(ap).md in Resources */,
@@ -2294,6 +2400,7 @@
 				08BDD5002C6B007A00914412 /* contentTransition(ap).md in Resources */,
 				08448FBA279EC3EA00B61353 /* 方法(ap).md in Resources */,
 				087A7AFD2C82860000321F85 /* 卡顿原因(ap).md in Resources */,
+				087AAA8A2C9A771C00877650 /* 设计模式(ap).md in Resources */,
 				08BDD53B2C6B007A00914412 /* SQLite.swift的使用(ap).md in Resources */,
 				08BDD5482C6B007A00914412 /* 小组件动画(ap).md in Resources */,
 				08BDD59F2C6B007A00914412 /* 特定情况视图协议(ap).md in Resources */,
@@ -2302,6 +2409,7 @@
 				08F51BC527A374A500693AB6 /* footer_js.html in Resources */,
 				08BDD5552C6B007A00914412 /* macOS技术演进(ap).md in Resources */,
 				0851E5772C87478700D9463A /* 启动优化-启动时间(ap).md in Resources */,
+				083266982C97E62F00E27CC5 /* 人工智能-语音(ap).md in Resources */,
 				08BDD5882C6B007A00914412 /* confirmationDialog()(ap).md in Resources */,
 				08BDD58C2C6B007A00914412 /* Popover(ap).md in Resources */,
 				088F2C2F2C8E827300DCA64F /* Share Extension(ap).md in Resources */,
@@ -2336,12 +2444,14 @@
 				08448FC1279EC4B500B61353 /* filter(ap).md in Resources */,
 				0851E54A2C860DFC00D9463A /* Clang静态分析器(ap).md in Resources */,
 				08BDD5122C6B007A00914412 /* merge(ap).md in Resources */,
+				0832669E2C97E67A00E27CC5 /* Stable Diffusion(ap).md in Resources */,
 				08BDD5AF2C6B007A00914412 /* LazyVStack和LazyHStack(ap).md in Resources */,
 				08BDD5442C6B007A00914412 /* 小组件-远程定时获取数据(ap).md in Resources */,
 				08F0F8BD2C95978C00DC659B /* 开源-笔记(ap).md in Resources */,
 				08BDD5DA2C6B517900914412 /* Table-拖拽(ap).md in Resources */,
 				087A7AF82C81409400321F85 /* 动态库注入技术(ap).md in Resources */,
 				087A7B0C2C8407E200321F85 /* Bazel-依赖分析(ap).md in Resources */,
+				0832669C2C97E65A00E27CC5 /* 人工智能-Metal(ap).md in Resources */,
 				08BDD5262C6B007A00914412 /* 格式化-生活日常(ap).md in Resources */,
 				087A7AEC2C80BCBA00321F85 /* Swift内存安全性及其实现机制(ap).md in Resources */,
 				087A7AE42C80686100321F85 /* Swift内存操作(ap).md in Resources */,
@@ -2365,6 +2475,7 @@
 				08448FAF279EC31200B61353 /* 不透明类型(ap).md in Resources */,
 				08448FE2279EC7CF00B61353 /* Nil-coalescing(ap).md in Resources */,
 				08448FD3279EC60300B61353 /* 数组(ap).md in Resources */,
+				083266962C97E5FF00E27CC5 /* Create ML(ap).md in Resources */,
 				08BDD50F2C6B007A00914412 /* Empty(ap).md in Resources */,
 				08448F64279EB32C00B61353 /* Swift规范(ap).md in Resources */,
 				087A7AFF2C828F7400321F85 /* 性能分析-工具(ap).md in Resources */,
@@ -2403,6 +2514,7 @@
 				08BDD5912C6B007A00914412 /* Blend Modes(ap).md in Resources */,
 				08BDD5502C6B007A00914412 /* 性能技术演进(ap).md in Resources */,
 				0832668D2C97238C00E27CC5 /* visionOS-Unity(ap).md in Resources */,
+				087AAAA32C9C0F0B00877650 /* 人工智能-Writing Tools(ap).md in Resources */,
 				08448FDA279EC6F500B61353 /* 赋值(ap).md in Resources */,
 				08BDD52A2C6B007A00914412 /* 系统判断(ap).md in Resources */,
 				08BDD5652C6B007A00914412 /* PhotoPicker(ap).md in Resources */,
@@ -2412,6 +2524,7 @@
 				08BDD5612C6B007A00914412 /* 文字Picker(ap).md in Resources */,
 				083266852C97209F00E27CC5 /* visionOS-入门(ap).md in Resources */,
 				08BDD57E2C6B007A00914412 /* NavigationSplitView(ap).md in Resources */,
+				083266A22C987A0700E27CC5 /* AI辅助开发APP(ap).md in Resources */,
 				08BDD4FE2C6B007A00914412 /* 动画-例子(ap).md in Resources */,
 				08BDD5B02C6B007A00914412 /* List-大纲视图(ap).md in Resources */,
 				08448FB6279EC39800B61353 /* 结构体(ap).md in Resources */,
@@ -2419,16 +2532,23 @@
 				086E03692C6E7136008CEDD3 /* 字符串时间(ap).md in Resources */,
 				08448F97279EB9B000B61353 /* 打印(ap).md in Resources */,
 				08448FC5279EC4F800B61353 /* sorted(ap).md in Resources */,
+				087AAA882C9A768200877650 /* 组件化模块化(ap).md in Resources */,
+				087AAA9D2C9ABEFB00877650 /* 人工智能-文本(ap).md in Resources */,
 				08F0F8BB2C95976E00DC659B /* 开源-阅读(ap).md in Resources */,
+				083266942C97E52700E27CC5 /* Core ML(ap).md in Resources */,
 				088F2C4C2C932C5800DCA64F /* 知识管理-PKM(ap).md in Resources */,
 				08BDD5422C6B007A00914412 /* 小组件-获取位置权限更新内容(ap).md in Resources */,
 				08BDD5952C6B007A00914412 /* SwiftUI Canvas(ap).md in Resources */,
 				08BDD5802C6B007A00914412 /* Advanced layout control(ap).md in Resources */,
+				083266A62C9888E900E27CC5 /* SwiftUI-入门(ap).md in Resources */,
 				08BDD5752C6B007A00914412 /* AnyLayout(ap).md in Resources */,
+				087AAA992C9AB23C00877650 /* Xcode(ap).md in Resources */,
+				087AAA952C9AAB9200877650 /* 跨平台-React Native(ap).md in Resources */,
 				087A7AE62C80AFD700321F85 /* 内存分配器libMalloc(ap).md in Resources */,
 				08BDD58B2C6B007A00914412 /* Menu和ContextMenu(ap).md in Resources */,
 				08BDD5A22C6B007A00914412 /* Documents协议(ap).md in Resources */,
 				08BDD5962C6B007A00914412 /* SwiftUI Effect(ap).md in Resources */,
+				087AAA972C9AAEA100877650 /* 自动化构建流程(ap).md in Resources */,
 				08BDD5CC2C6B007A00914412 /* TextEditor(ap).md in Resources */,
 				08BDD5172C6B007A00914412 /* Scheduler(ap).md in Resources */,
 				0851E55B2C86DA7800D9463A /* SwiftSyntax(ap).md in Resources */,
@@ -2447,13 +2567,17 @@
 				08BDD5712C6B007A00914412 /* 布局原理(ap).md in Resources */,
 				0851E5792C87563100D9463A /* 截获网络请求数据(ap).md in Resources */,
 				0851E5462C85F7ED00D9463A /* MachO(ap).md in Resources */,
+				087AAA862C9A71D700877650 /* 包管理工具-介绍(ap).md in Resources */,
 				08F0F8B32C95969500DC659B /* 开源-天气(ap).md in Resources */,
 				08BDD5D02C6B007B00914412 /* 修饰符-圆角(ap).md in Resources */,
+				083266922C97E51400E27CC5 /* 人工智能-介绍(ap).md in Resources */,
 				08BDD5872C6B007A00914412 /* Alert(ap).md in Resources */,
 				08BDD5B42C6B007A00914412 /* List-搜索(ap).md in Resources */,
 				0851E56D2C8711DA00D9463A /* OC运行时(ap).md in Resources */,
 				086E03632C6E70EB008CEDD3 /* TimeInterval(ap).md in Resources */,
 				0851E5692C870C4E00D9463A /* InApp分析工具(ap).md in Resources */,
+				087AAA9F2C9AC1E200877650 /* 使用LLM模型(ap).md in Resources */,
+				0832669A2C97E64700E27CC5 /* 人工智能-视觉(ap).md in Resources */,
 				08BDD5372C6B007A00914412 /* AttributeString(ap).md in Resources */,
 				08BDD5032C6B007A00914412 /* PhaseAnimator(ap).md in Resources */,
 				08BDD5022C6B007A00914412 /* Matched Geometry Effect(ap).md in Resources */,
@@ -2475,7 +2599,6 @@
 				0851E55D2C86E00600D9463A /* 安全-介绍(ap).md in Resources */,
 				08BDD5C92C6B007A00914412 /* Image(ap).md in Resources */,
 				08BDD51D2C6B007A00914412 /* Concurrency技术演进(ap).md in Resources */,
-				08BDD5242C6B007A00914412 /* 单例(ap).md in Resources */,
 				087A7AF12C80C7E700321F85 /* Swift运行时(ap).md in Resources */,
 				08BDD54D2C6B007A00914412 /* 调试(ap).md in Resources */,
 				08BDD53C2C6B007A00914412 /* 网络状态检查(ap).md in Resources */,
@@ -2499,6 +2622,7 @@
 				08BDD5AA2C6B007A00914412 /* Button(ap).md in Resources */,
 				08BDD5CF2C6B007B00914412 /* 修饰符-蒙版(ap).md in Resources */,
 				08BDD5572C6B007A00914412 /* 创建@Model模型(ap).md in Resources */,
+				087AAA792C9A6E6000877650 /* 程序入口点(ap).md in Resources */,
 				08BDD5C42C6B007A00914412 /* Table(ap).md in Resources */,
 				08BDD5532C6B007A00914412 /* macOS范例(ap).md in Resources */,
 				088F2C462C932A5B00DCA64F /* 知识管理-消化(ap).md in Resources */,
@@ -2525,6 +2649,7 @@
 				0851E53D2C85CAA400D9463A /* 编辑器-三方工具(ap).md in Resources */,
 				08BDD5DC2C6B566E00914412 /* Table-可交互(ap).md in Resources */,
 				08BDD5CB2C6B007A00914412 /* Link(ap).md in Resources */,
+				087AAA842C9A718D00877650 /* Swift Package Manager(ap).md in Resources */,
 				088F2C382C93295200DCA64F /* 知识管理-输入(ap).md in Resources */,
 				08BDD51B2C6B007A00914412 /* async await(ap).md in Resources */,
 				0832667B2C96C04600E27CC5 /* visionOS-Object Capture(ap).md in Resources */,
@@ -2540,6 +2665,7 @@
 				08448FE6279EC82500B61353 /* 逻辑(ap).md in Resources */,
 				08448F95279EB96F00B61353 /* 变量(ap).md in Resources */,
 				0851E5532C86783400D9463A /* LLDB(ap).md in Resources */,
+				087AAAA12C9C0EEA00877650 /* 人工智能-Translation(ap).md in Resources */,
 				087A7AEE2C80C22400321F85 /* iOS虚拟内存(ap).md in Resources */,
 				08BDD5DF2C6C4BAE00914412 /* SwiftUI数据流-@State(ap).md in Resources */,
 				08BDD5E12C6C4BC500914412 /* SwiftUI数据流-@Binding(ap).md in Resources */,
@@ -2553,12 +2679,14 @@
 				0851E5702C872A7A00D9463A /* CPU占用率(ap).md in Resources */,
 				08BDD5BA2C6B007A00914412 /* 固定到滚动视图的顶部(ap).md in Resources */,
 				088F2C422C932A0900DCA64F /* 知识管理-CODE方法论(ap).md in Resources */,
+				087AAA732C9A6C9B00877650 /* 架构技术演进(ap).md in Resources */,
 				08BDD5642C6B007A00914412 /* DatePicker(ap).md in Resources */,
 				0851E5612C86E9D200D9463A /* MetricKit(ap).md in Resources */,
 				08BDD56A2C6B007A00914412 /* Stepper(ap).md in Resources */,
 				08BDD5132C6B007A00914412 /* PassthroughSubject(ap).md in Resources */,
 				083266692C9663DC00E27CC5 /* 农历公历互转(ap).md in Resources */,
 				08BDD54C2C6B007A00914412 /* Widget View(ap).md in Resources */,
+				087AAA932C9AAB7F00877650 /* 跨平台-大厂自研(ap).md in Resources */,
 				08BDD5C12C6B007A00914412 /* Table-行的选择(ap).md in Resources */,
 				08BDD5BB2C6B007A00914412 /* 滚动到特定的位置(ap).md in Resources */,
 				087A7AE82C80B74B00321F85 /* 检测和诊断内存问题(ap).md in Resources */,
@@ -2573,6 +2701,7 @@
 				08BDD59B2C6B007A00914412 /* SwiftUI颜色(ap).md in Resources */,
 				08BDD5582C6B007A00914412 /* 容器配置modelContainer(ap).md in Resources */,
 				08BDD5D32C6B007B00914412 /* 自定义修饰符(ap).md in Resources */,
+				087AAA8C2C9A7D9400877650 /* 容器化插件化(ap).md in Resources */,
 				084DBA0F2C6D086F00C9D88D /* 图片处理-基础(ap).md in Resources */,
 				08BDD5082C6B007A00914412 /* Combine KVO(ap).md in Resources */,
 				08BDD57B2C6B007A00914412 /* Inspectors右侧多出一栏(ap).md in Resources */,
@@ -2584,7 +2713,7 @@
 				08BDD5142C6B007A00914412 /* prepend(ap).md in Resources */,
 				087A7AE12C8060B300321F85 /* 包体积-链接器优化(ap).md in Resources */,
 				08BDD50D2C6B007A00914412 /* combineLatest(ap).md in Resources */,
-				08BDD5232C6B007A00914412 /* 程序入口点(ap).md in Resources */,
+				087AAA772C9A6E0800877650 /* 单例(ap).md in Resources */,
 				08BDD5782C6B007A00914412 /* ViewThatFits(ap).md in Resources */,
 				088F2C3A2C93296200DCA64F /* 笔记记录方法(ap).md in Resources */,
 				088F2C3E2C9329E400DCA64F /* PARA记录法(ap).md in Resources */,
@@ -2598,10 +2727,12 @@
 				0832667D2C96C18100E27CC5 /* ARKit(ap).md in Resources */,
 				08BDD5942C6B007A00914412 /* SwiftCharts(ap).md in Resources */,
 				08448FE8279EC84B00B61353 /* 恒等(ap).md in Resources */,
+				083266A42C987D9000E27CC5 /* macOS开源-菜单栏(ap).md in Resources */,
 				084DBA122C6DA52D00C9D88D /* 日期组件(ap).md in Resources */,
 				08BDD58E2C6B007A00914412 /* SwiftUI参考资料(ap).md in Resources */,
 				086A5F0E2744E89100FECE02 /* Preview Assets.xcassets in Resources */,
 				08BDD5EB2C6C950D00914412 /* SwiftData和CoreData(ap).md in Resources */,
+				087AAA9B2C9AB32800877650 /* CocoaPods(ap).md in Resources */,
 				087A7B092C83737E00321F85 /* Bazel-介绍(ap).md in Resources */,
 				08BDD55F2C6B007A00914412 /* SwiftData-资料(ap).md in Resources */,
 				08448F0F2799328700B61353 /* css_cn.html in Resources */,
@@ -2653,6 +2784,7 @@
 				08BDD5D82C6B007B00914412 /* ViewBuilder(ap).md in Resources */,
 				08448FE0279EC7AF00B61353 /* 三元(ap).md in Resources */,
 				08BDD5BE2C6B007A00914412 /* ScrollView-参考资料(ap).md in Resources */,
+				087AAA912C9AAB6C00877650 /* 跨平台-布局渲染(ap).md in Resources */,
 				086A5F0B2744E89100FECE02 /* Assets.xcassets in Resources */,
 				088F2C362C93293F00DCA64F /* 知识管理-工具(ap).md in Resources */,
 				08BDD5432C6B007A00914412 /* 小组件-配置选项(ap).md in Resources */,
@@ -2759,9 +2891,11 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -2823,9 +2957,11 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -2856,7 +2992,8 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 20;
+				CURRENT_PROJECT_VERSION = 24;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"SwiftPamphletApp/Preview Content\"";
 				DEVELOPMENT_TEAM = 962Z8PV35L;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -2870,7 +3007,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
-				MARKETING_VERSION = 6.5.1;
+				MARKETING_VERSION = 6.6.3;
 				OTHER_LDFLAGS = (
 					"-Xlinker",
 					"-interposable",
@@ -2884,7 +3021,8 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 5.0;
+				SWIFT_STRICT_CONCURRENCY = complete;
+				SWIFT_VERSION = 6.0;
 			};
 			name = Debug;
 		};
@@ -2899,7 +3037,8 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 20;
+				CURRENT_PROJECT_VERSION = 24;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"SwiftPamphletApp/Preview Content\"";
 				DEVELOPMENT_TEAM = 962Z8PV35L;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -2913,13 +3052,14 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
-				MARKETING_VERSION = 6.5.1;
+				MARKETING_VERSION = 6.6.3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.starming.SwiftPamphletAppByMing;
 				PRODUCT_NAME = "戴铭的开发小册子";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "";
-				SWIFT_VERSION = 5.0;
+				SWIFT_STRICT_CONCURRENCY = complete;
+				SWIFT_VERSION = 6.0;
 			};
 			name = Release;
 		};
@@ -2994,8 +3134,8 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/gonzalezreal/MarkdownUI";
 			requirement = {
-				kind = exactVersion;
-				version = 2.3.0;
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.3.0;
 			};
 		};
 		08D107BB278826BA007B7009 /* XCRemoteSwiftPackageReference "swift-html-entities" */ = {
