@@ -1,27 +1,28 @@
-# 戴铭的开发小册子 6.x
+# 戴铭的小册子 6.x
 [![Available on the App Store](https://ming1016.github.io/qdimg/badge-download-on-the-mac-app-store.svg)](https://apps.apple.com/cn/app/id1609702529)
 
-Swift开发的手册，是个 macOS 程序，已上线macOS应用商店，[点击购买安装(98元)](https://apps.apple.com/cn/app/%E6%88%B4%E9%93%AD%E7%9A%84%E5%BC%80%E5%8F%91%E5%B0%8F%E5%86%8C%E5%AD%90/id1609702529?mt=12)，或直接在商店搜索“戴铭”关键字。安装应用方便更新程序。在我[博客](https://starming.com)上会有部分文字内容可以看。
+Swift开发的手册，是个 macOS 程序，已上线macOS应用商店，[点击安装](https://apps.apple.com/cn/app/%E6%88%B4%E9%93%AD%E7%9A%84%E5%BC%80%E5%8F%91%E5%B0%8F%E5%86%8C%E5%AD%90/id1609702529?mt=12)，或直接在商店搜索“戴铭”关键字。安装应用方便更新程序。在我[博客](https://starming.com)上会有部分文字内容可以看。有什么想说的，来我的 [Discord](https://discord.gg/sBksuXjQmj) 吧
 
 本手册使用 SwiftData、Observable、NavigationSplitView 进行了重构，现在可自己添加管理资料，和知识点做关联。
 
 内容主要包含
 
 - Apple 技术知识点以及示例
-- 历年 WWDC
+- 计算机科学知识
+- 各类知识合集
 
 功能主要包含
 
 - 手册书签收藏
 - 资料收集整理（参考[我是怎么做个人知识管理（PKM）的，从史前时代备忘录、Sublime，经历了Evernote，Markdown兴起，Bear的优雅，Notion革命，飞书语雀，Obsidian、Flomo，到最后使用卢曼卡片盒笔记法串起了流程](https://mp.weixin.qq.com/s/PbUOxURK57eIeSnuE1mh4g)这篇文章，里面有提及如何使用小册子的资料整理功能）
-- 离线保存资料
+- 资料网页离线保存（防止网络资料源丢失）
 - 知识点和资料关联
-- 手册、WWDC和资料可搜索
-- Github 开发者和仓库信息添加管理
+- 手册内容和资料可搜索
+- Github 开发者和仓库信息添加管理（在设置里添加 token）
 
-本应用知识点目前主要有 Swift 基础语法，SwiftUI，SwiftData，小组件等知识内容。
+本应用知识点目前主要有 Swift 基础语法，SwiftUI，SwiftData，小组件等知识内容。更多 iOS 开发资料，信息以及开发者活动可以关注 [XR 基地](https://xreality.zone) 和 [SwiftGG](https://swiftgg.team)。SwiftGG 的愿景是致力于成为中国与海外技术社区的桥梁，为中国开发者创造展示自我走向世界舞台的机会。
 
-本版本解决了以下几个问题。
+小册子6.x版本解决了以下几个问题。
 
 第一个，存储的问题。以前使用的是三方数据库，写法比较繁琐且和 SwiftUI 结合的不好。现在用的是 SwiftData，写法简洁了很多，代码也好维护了。更多技术重构细节可以直接查看代码。
 

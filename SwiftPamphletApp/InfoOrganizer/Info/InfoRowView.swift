@@ -9,36 +9,27 @@ import SwiftUI
 import InfoOrganizer
 import SMDate
 
+
 struct InfoRowView: View {
     @State var info: IOInfo
     @State private var showAlert = false
+    @Environment(\.colorScheme) var colorScheme
+    @Environment(\.isFocused) private var isFocused
+#if os(iOS)
+    let cardbgColor = Color(UIColor.systemBackground)
+#elseif os(macOS)
+    let cardbgColor = Color(NSColor.textBackgroundColor)
+#endif
     
     var body: some View {
         VStack(alignment:.leading) {
             HStack(alignment: .top) {
                 if let coverImg = info.coverImage {
                     VStack {
-    //                    Rectangle()
-    //                        .fill(Color(light: .white, dark: .black))
-    //                        .frame(height: 80)
-    //                        .cornerRadius(5)
-    //                    GeometryReader { geometry in
-    //                        if coverImg.url.isEmpty == false {
-    //                            NukeImage(width: geometry.size.width, height: geometry.size.height, url: coverImg.url, contentModel: .fill)
-    //                        } else if let imgData = coverImg.imgData {
-    //                            if let nsImage = NSImage(data: imgData) {
-    //                                Image(nsImage: nsImage)
-    //                                    .resizable()
-    //                                    .scaledToFill()
-    //                                    .frame(width: geometry.size.width, height: geometry.size.height)
-    //                                    .cornerRadius(5)
-    //                            }
-    //                        }
-    //                    }
-                        
                         if coverImg.url.isEmpty == false {
                             NukeImage(width: 50, height: 50, url: coverImg.url, contentModel: .fill)
                         } else if let imgData = coverImg.imgData {
+                            #if os(macOS)
                             if let nsImage = NSImage(data: imgData) {
                                 Image(nsImage: nsImage)
                                     .resizable()
@@ -46,8 +37,16 @@ struct InfoRowView: View {
                                     .frame(width: 50, height: 50)
                                     .cornerRadius(5)
                             }
+                            #elseif os(iOS)
+                            if let uiImage = UIImage(data: imgData) {
+                                Image(uiImage: uiImage)
+                                    .resizable()
+                                    .scaledToFill()
+                                    .frame(width: 50, height: 50)
+                                    .cornerRadius(5)
+                            }
+                            #endif
                         }
-                        
                     }
                     .shadow(color: Color(.sRGB, red: 0, green: 0, blue: 0, opacity: 0.3), radius: 1, x: 0, y: 0)
                 }
@@ -112,7 +111,8 @@ struct InfoRowView: View {
             .font(.footnote)
             .padding(EdgeInsets(top: 0, leading: 0, bottom: 10, trailing: 0))
         }
-        .listRowSeparator(.hidden, edges: .all)
+//        .listRowSeparator(.hidden, edges: .all)
+        .padding(5)
         .swipeActions {
             Button(role: .destructive) {
                 IOInfo.delete(info)

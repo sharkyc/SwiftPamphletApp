@@ -35,6 +35,8 @@ struct EditInfoView: View {
     @State var isStopLoadingWeb = false
     // webarchive
     @State var savingDataTrigger = false
+    // markdown
+    @State var buildMarkdownTrigger = false
     // 图集
     @State var selectedPhotos = [PhotosPickerItem]()
     @State var addWebImageUrl = ""
@@ -133,7 +135,11 @@ struct EditInfoView: View {
     
     // MARK: Image
     @State private var largeImageUrlStr = ""
+    #if os(macOS)
     @State private var largeNSImage: NSImage? = nil
+    #elseif os(iOS)
+    @State private var largeUIImage: UIImage? = nil
+    #endif
     
     @MainActor
     @ViewBuilder
@@ -162,6 +168,7 @@ struct EditInfoView: View {
                                 ForEach(Array(infoImgs.enumerated()), id:\.0) {i, img in
                                     VStack {
                                         if let data = img.imgData {
+                                            #if os(macOS)
                                             if let nsImg = NSImage(data: data) {
                                                 Image(nsImage: nsImg)
                                                     .resizable()
@@ -185,6 +192,31 @@ struct EditInfoView: View {
 
                                                     }
                                             }
+                                            #elseif os(iOS)
+                                            if let uiImg = UIImage(data: data) {
+                                                Image(uiImage: uiImg)
+                                                    .resizable()
+                                                    .scaledToFit()
+                                                    .cornerRadius(5)
+                                                    .onTapGesture(perform: {
+                                                        largeUIImage = uiImg
+                                                    })
+                                                    .contextMenu {
+                                                        Button {
+                                                            IOInfo.updateCoverImage(info: info, img: img)
+                                                        } label: {
+                                                            Label("设为封面图", image: "doc.text.image")
+                                                        }
+                                                        Button {
+                                                            info.imgs?.remove(at: i)
+                                                            IOImg.delete(img)
+                                                        } label: {
+                                                            Label("删除", image: "circle")
+                                                        }
+                                                        
+                                                    }
+                                            }
+                                        #endif
                                         } else if img.url.isEmpty == false {
                                             NukeImage(url: img.url)
                                             .contextMenu {
@@ -194,9 +226,13 @@ struct EditInfoView: View {
                                                     Label("设为封面图", image: "doc.text.image")
                                                 }
                                                 Button {
+                                                    #if os(macOS)
                                                     let p = NSPasteboard.general
-                                                    p.declareTypes([.string], owner: nil)
-                                                    p.setString(img.url, forType: .string)
+                                                    p.copyText(img.url)
+                                                    #elseif os(iOS)
+                                                    let p = UIPasteboard.general
+                                                    p.string = img.url
+                                                    #endif
                                                 } label: {
                                                     Label("复制图片链接", image: "circle")
                                                 }
@@ -227,9 +263,13 @@ struct EditInfoView: View {
                                         Label("设为封面图", image: "doc.text.image")
                                     }
                                     Button {
+                                        #if os(macOS)
                                         let p = NSPasteboard.general
-                                        p.declareTypes([.string], owner: nil)
-                                        p.setString(img, forType: .string)
+                                        p.copyText(img)
+                                        #elseif os(iOS)
+                                        let p = UIPasteboard.general
+                                        p.string = img
+                                        #endif
                                     } label: {
                                         Label("复制图片链接", image: "circle")
                                     }
@@ -251,6 +291,7 @@ struct EditInfoView: View {
                             }
                         }
                 }
+                #if os(macOS)
                 if largeNSImage != nil {
                     Image(nsImage: largeNSImage!)
                         .resizable()
@@ -261,11 +302,27 @@ struct EditInfoView: View {
                             }
                         }
                 }
+                #elseif os(iOS)
+                if largeUIImage != nil {
+                    Image(uiImage: largeUIImage!)
+                        .resizable()
+                        .scaledToFit()
+                        .onTapGesture {
+                            withAnimation {
+                                largeUIImage = nil
+                            }
+                        }
+                }
+                #endif
             }
         }
         .onChange(of: info, { oldValue, newValue in
             largeImageUrlStr = ""
+            #if os(macOS)
             largeNSImage = nil
+            #elseif os(iOS)
+            largeUIImage = nil
+            #endif
         })
         .padding(10)
         .tabItem { Label("图集", systemImage: "circle")}
@@ -281,6 +338,8 @@ struct EditInfoView: View {
                     urlStr: url.absoluteString,
                     savingDataTrigger: $savingDataTrigger,
                     savingData: $info.webArchive,
+                    buildMarkdownTrigger: $buildMarkdownTrigger,
+                    buildString: $info.des,
                     isStop: $isStopLoadingWeb
                 )
                 TextEditor(text: $info.des)
@@ -298,7 +357,6 @@ struct EditInfoView: View {
     private func textAndPreviewView() -> some View {
         TextEditor(text: $info.des).border()
             .padding(10)
-            .contentMargins(.all, 30, for: .scrollContent)
             .tabItem { Label("文本", systemImage: "circle") }
             .tag(1)
 //        WebUIView(html: wrapperHtmlContent(content: MarkdownParser().html(from: info.des)), baseURLStr: "")
@@ -349,6 +407,7 @@ struct EditInfoView: View {
                                             showSheet = false
                                             info.des = "[\(oneTerm)]" + "\n" + info.des
                                         }
+                                        .fixedSize()
                                     }
                                 }
                                 Spacer()
@@ -430,6 +489,12 @@ struct EditInfoView: View {
                     }
                 }
                 .help("离线内容")
+                // 网页转 markdown
+                Button {
+                    buildMarkdownTrigger = true
+                } label: {
+                    Image(systemName: "m.square")
+                }
             } // end if
         }
     }
@@ -461,6 +526,7 @@ struct EditInfoView: View {
                 Image(systemName: isShowRelateTextField == true ? "network.slash" : "network")
             }
             .help("关联编辑")
+            .keyboardShortcut(KeyEquivalent("r"), modifiers: .command)
         }
     }
 

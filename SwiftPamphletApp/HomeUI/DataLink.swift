@@ -19,14 +19,19 @@ struct DataLink: Identifiable {
     enum ShowType {
     case content,detail
     }
-    
-    @ViewBuilder
-    static func viewToShow(
+
+    @MainActor @ViewBuilder static func viewToShow(
         for title: String?,
         selectInfo:Binding<IOInfo?>,
         selectDev:Binding<DeveloperModel?>,
         selectInfoBindable: IOInfo?,
         selectDevBindable: DeveloperModel?,
+        selectGuideItem: Binding<L?>,
+        selectGuideItemBindable: L?,
+        selectItem: Binding<String?>,
+        selectItemBindable: String?,
+        limit: Binding<Int>,
+        trigger: Binding<Bool>,
         type: ShowType
     ) -> some View {
         switch title {
@@ -93,9 +98,53 @@ struct DataLink: Identifiable {
         case "Apple技术":
             switch type {
             case .content:
-                GuideListView()
+                GuideListView(
+                    listModel: GuideListModel(plModel: AppleGuide().outline, pplName: "ap"),
+                    selectedItem: selectGuideItem
+                )
             case .detail:
-                IntroView()
+                if let item = selectGuideItemBindable {
+                    GuideDetailView(
+                        t: item.t,
+                        icon: item.icon,
+                        l: item,
+                        plName: "ap",
+                        limit: limit,
+                        trigger: trigger
+                    )
+                }
+            }
+        case "计算机科学":
+            switch type {
+            case .content:
+                GuideListView(listModel: GuideListModel(plModel: CSGuide().outline, pplName: "cs"), selectedItem: selectGuideItem)
+            case .detail:
+                if let item = selectGuideItemBindable {
+                    GuideDetailView(
+                        t: item.t,
+                        icon: item.icon,
+                        l: item,
+                        plName: "cs",
+                        limit: limit,
+                        trigger: trigger
+                    )
+                }
+            }
+        case "知识":
+            switch type {
+            case .content:
+                GuideListView(listModel: GuideListModel(plModel: KnowledgeGuide().outline, pplName: "kg"), selectedItem: selectGuideItem)
+            case .detail:
+                if let item = selectGuideItemBindable {
+                    GuideDetailView(
+                        t: item.t,
+                        icon: item.icon,
+                        l: item,
+                        plName: "kg",
+                        limit: limit,
+                        trigger: trigger
+                    )
+                }
             }
         case "WWDC":
             switch type {
@@ -107,15 +156,38 @@ struct DataLink: Identifiable {
         case "书签":
             switch type {
             case .content:
-                BookmarkListView()
+                BookmarkListView(selectedItem: selectGuideItem)
             case .detail:
-                IntroView()
+                if let item = selectGuideItemBindable {
+                    GuideDetailView(
+                        t: item.t,
+                        icon: item.icon,
+                        l: item,
+                        plName: "ap",
+                        limit: limit,
+                        trigger: trigger
+                    )
+                }
+            }
+        case "设置":
+            switch type {
+            case .content:
+                SettingSidebarView(selectedItem: selectItem)
+            case .detail:
+                switch selectItemBindable {
+                case "Github Token 设置":
+                    GithubAccessTokenView()
+                case "自定义标签":
+                    CustomSearch()
+                default:
+                    IntroView()
+                }
             }
         default:
             switch type {
             case .content:
                 // 默认
-                GuideListView()
+                InfoListView(selectInfo: selectInfo)
             case .detail:
                 IntroView()
             }
@@ -124,10 +196,12 @@ struct DataLink: Identifiable {
 }
 
 extension DataLink {
-    static var dataLinks = [
+    static let dataLinks = [
         DataLink(title: "开发手册", imageName: "", children: [
             DataLink(title: "书签", imageName: "p24", color: .mint),
             DataLink(title: "Apple技术", imageName: "p19", color: .indigo),
+            DataLink(title: "计算机科学", imageName: "p22"),
+            DataLink(title: "知识", imageName: "p23"),
 //            DataLink(title: "WWDC", imageName: "p22")
         ]),
         DataLink(title: "资料整理", imageName: "", children: [
@@ -135,6 +209,9 @@ extension DataLink {
             DataLink(title: "未分类", imageName: "p6"),
             DataLink(title: "收藏", imageName: "p11"),
             DataLink(title: "归档", imageName: "p3")
+        ]),
+        DataLink(title: "工具", imageName: "", children: [
+            DataLink(title: "设置", imageName: "p27")
         ])
     ]
     static func dataLinksWithGithub() -> [DataLink] {

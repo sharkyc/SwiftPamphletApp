@@ -11,6 +11,7 @@ import SMFile
 import SMDate
 import SwiftData
 import InfoOrganizer
+import MarkdownUI
 
 struct GuideDetailView: View {
     @Environment(\.modelContext) var modelContext
@@ -18,7 +19,9 @@ struct GuideDetailView: View {
     @AppStorage(SPC.isShowPamphletInspector) var asIsShowPamphletInspector: Bool = false
     var t: String
     var icon: String
+    var l: L
     var plName: String
+    @State var tContent: String
     @Binding var limit: Int
     @Binding var trigger: Bool
     
@@ -28,14 +31,16 @@ struct GuideDetailView: View {
     
     
     // 初始化
-    init(t:String, icon:String, plName: String, limit: Binding<Int>, trigger: Binding<Bool>) {
+    init(t:String, icon:String, l: L, plName: String, limit: Binding<Int>, trigger: Binding<Bool>) {
         self.t = t
         self.icon = icon
+        self.l = l
         self.plName = plName
+        self.tContent = ""
         self._trigger = trigger
         var fd = FetchDescriptor<IOInfo>(predicate: #Predicate { info in
-            info.relateName == t && info.isArchived == false
-        }, sortBy: [SortDescriptor(\IOInfo.updateDate, order: .reverse)])
+            info.relateName == t
+        }, sortBy: [SortDescriptor(\IOInfo.isArchived, order: .forward),SortDescriptor(\IOInfo.updateDate, order: .reverse)])
         fd.fetchLimit = limit.wrappedValue
         _infos = Query(fd)
         self._limit = limit
@@ -56,7 +61,7 @@ struct GuideDetailView: View {
                     })
                     .onChange(of: isBookmarked) { oldValue, newValue in
                         if newValue == true {
-                            BookmarkModel.addBM(t, icon: icon, plName: plName, context: modelContext)
+                            BookmarkModel.addBM(t, icon: icon, plName: plName, type: l.type, context: modelContext)
                         } else {
                             BookmarkModel.delBM(t, plName: plName, context: modelContext)
                         }
@@ -82,7 +87,12 @@ struct GuideDetailView: View {
                 }
                 .padding(EdgeInsets(top: 10, leading: 10, bottom: 2, trailing: 10))
                 // 内容
-                WebUIView(html: wrapperHtmlContent(content: MarkdownParser().html(from: "\(SMFile.loadBundleString("\(t)" + "(\(plName)).md"))")), baseURLStr: "")
+                if l.url.isEmpty == false {
+                    WebUIView(urlStr: l.url)
+                } else {
+                    WebUIView(html: tContent, baseURLStr: "")
+                }
+               
             } else {
                 if let info = selectInfo {
                     EditInfoView(info: info)
@@ -131,12 +141,24 @@ struct GuideDetailView: View {
         }
         .onAppear {
             isShowInspector = asIsShowPamphletInspector
+            updateContent()
         }
         .onChange(of: t) { oldValue, newValue in
             selectInfo = nil
+            updateContent()
         }
         .onChange(of: isShowInspector) { oldValue, newValue in
             asIsShowPamphletInspector = newValue
+        }
+
+    }
+    
+    func updateContent() {
+        let str = SMFile.loadBundleString("\(t)" + "(\(plName)).md")
+        if l.type == 1 {
+            tContent = str
+        } else {
+            tContent = wrapperHtmlContent(content: MarkdownParser().html(from: str))
         }
     }
     

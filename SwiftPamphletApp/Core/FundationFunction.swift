@@ -39,13 +39,15 @@ func wrapperHtmlContent(content: String, codeStyle: String = "lioshi.min") -> St
 // MARK: - 基础
 // decoder
 // extension 
-
+#if os(macOS)
 extension NSPasteboard {
     func copyText(_ text: String) {
         self.clearContents()
+        self.declareTypes([.string], owner: nil)
         self.setString(text, forType: .string)
     }
 }
+#endif
 
 // base64
 extension String {
@@ -59,7 +61,7 @@ extension String {
     }
 }
 // 用于 SwiftData，让布尔值可排序
-extension Bool: Comparable {
+extension Bool: @retroactive Comparable {
     public static func <(lhs: Self, rhs: Self) -> Bool {
         // the only true inequality is false < true
         !lhs && rhs

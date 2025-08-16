@@ -1,6 +1,36 @@
 {
   "images" : [
     {
+      "filename" : "ChatGPT Image 2025年6月8日 22_09_10 1.png",
+      "idiom" : "universal",
+      "platform" : "ios",
+      "size" : "1024x1024"
+    },
+    {
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ],
+      "filename" : "ChatGPT Image 2025年6月8日 22_09_10.png",
+      "idiom" : "universal",
+      "platform" : "ios",
+      "size" : "1024x1024"
+    },
+    {
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "tinted"
+        }
+      ],
+      "filename" : "ChatGPT Image 2025年6月8日 22_09_10 2.png",
+      "idiom" : "universal",
+      "platform" : "ios",
+      "size" : "1024x1024"
+    },
+    {
       "filename" : "16.png",
       "idiom" : "mac",
       "scale" : "1x",

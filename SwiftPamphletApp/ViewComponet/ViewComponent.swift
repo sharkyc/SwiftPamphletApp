@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-import WebKit
+@preconcurrency import WebKit
 import MarkdownUI
 import SMFile
 import SMNetwork
@@ -26,6 +26,7 @@ struct SPOutlineListView<D, Content>: View where D: RandomAccessCollection, D.El
         }
     }
 }
+
 
 struct SPOutlineView<D, Content>: View where D: RandomAccessCollection, D.Element: Identifiable, Content: View {
     let d: D
@@ -113,22 +114,26 @@ struct ShareView: View {
     var body: some View {
         Menu {
             Button {
+                #if os(macOS)
                 let p = NSPasteboard.general
-                p.declareTypes([.string], owner: nil)
-                p.setString(s, forType: .string)
+                p.copyText(s)
+                #elseif os(iOS)
+                UIPasteboard.general.string = s
+                #endif
             } label: {
                 Image(systemName: "doc.on.doc")
                 Text("拷贝链接")
             }
             Divider()
-            ForEach(NSSharingService.sharingServices(forItems: [""]), id: \.title) { item in
-                Button {
-                    item.perform(withItems: [s])
-                } label: {
-                    Image(nsImage: item.image)
-                    Text(item.title)
-                }
-            }
+            
+//            ForEach(NSSharingService.sharingServices(forItems: [""]), id: \.title) { item in
+//                Button {
+//                    item.perform(withItems: [s])
+//                } label: {
+//                    Image(nsImage: item.image)
+//                    Text(item.title)
+//                }
+//            }
         } label: {
             Image(systemName: "square.and.arrow.up")
             Text("分享")
@@ -136,6 +141,87 @@ struct ShareView: View {
     }
 }
 
+// MARK: - WebView 共享函数
+extension WKWebView {
+    func loadContent(urlStr: String, html: String, baseURLStr: String) {
+        if urlStr.isEmpty {
+            let host = URL(string: baseURLStr)?.host ?? ""
+            self.loadHTMLString(html, baseURL: URL(string: "https://\(host)"))
+        } else {
+            if let url = URL(string: urlStr) {
+                let r = URLRequest(url: url)
+                self.load(r)
+            }
+        }
+    }
+    
+    func handleMarkdownConversion(completion: @escaping (String?) -> Void) {
+        // 使用Turndown.js库将HTML转换为Markdown
+        let data = SMFile.loadBundleData("TurndownService.html")
+        var script = String(data: data, encoding: .utf8) ?? ""
+        
+        script += """
+
+        // 执行转换的函数
+        function getMarkdown() {
+            try {
+                // 创建Turndown服务实例
+                var turndownService = new TurndownService({
+                    headingStyle: 'atx',
+                    codeBlockStyle: 'fenced',
+                    emDelimiter: '*'
+                });
+                
+                // 配置Turndown保留只需要的元素
+                // turndownService.keep(['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p', 'ul', 'ol', 'li']);
+                
+                // 自定义规则，忽略不需要的内容
+                turndownService.remove(['style', 'script', 'noscript', 'iframe', 'form', 'button', 'input']);
+                
+                // 获取文档body作为内容
+                var content = document.body.innerHTML;
+                
+                // 转换为markdown
+                var markdown = turndownService.turndown(content);
+                
+                return markdown;
+            } catch (e) {
+                console.error('Markdown转换错误:', e);
+                return '转换错误: ' + e.message;
+            }
+        }
+        
+        // 执行并返回结果
+        getMarkdown();
+        """
+        
+        self.evaluateJavaScript(script) { (result, error) in
+            if let error = error {
+                print("JavaScript 执行错误: \(error)")
+                completion(nil)
+            } else if let markdownContent = result as? String {
+                completion(markdownContent)
+            } else {
+                completion(nil)
+            }
+        }
+    }
+    
+    func loadSavedOrRemoteContent(savingData: Data?, urlStr: String, completion: @escaping () -> Void) {
+        if let data = savingData {
+            self.load(data, mimeType: "application/x-webarchive", characterEncodingName: "utf-8", baseURL: SMFile.getDocumentsDirectory())
+            completion()
+        } else {
+            if let url = URL(string: urlStr) {
+                let r = URLRequest(url: url)
+                self.load(r)
+                completion()
+            }
+        }
+    }
+}
+
+#if os(macOS)
 // MARK: - WebView
 struct WebUIView: NSViewRepresentable {
     var urlStr: String = ""
@@ -143,7 +229,7 @@ struct WebUIView: NSViewRepresentable {
     var baseURLStr: String = ""
 
     func makeCoordinator() -> Coordinator {
-        Coordinator()
+        return Coordinator()
     }
     
     func makeNSView(context: Context) -> some WKWebView {
@@ -153,47 +239,24 @@ struct WebUIView: NSViewRepresentable {
     }
 
     func updateNSView(_ nsView: NSViewType, context: Context) {
-        if urlStr.isEmpty {
-            let host = URL(string: baseURLStr)?.host ?? ""
-            nsView.loadHTMLString(html, baseURL: URL(string: "https://\(host)"))
-        } else {
-            if let url = URL(string: urlStr) {
-                let r = URLRequest(url: url)
-                nsView.load(r)
-            }
-        }
-        
+        nsView.loadContent(urlStr: urlStr, html: html, baseURLStr: baseURLStr)
     }
     
     class Coordinator: NSObject, WKNavigationDelegate {
-        
-        func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
+        func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, preferences: WKWebpagePreferences) async -> (WKNavigationActionPolicy, WKWebpagePreferences) {
             if navigationAction.navigationType == .linkActivated {
                 if let url = navigationAction.request.url {
+                    // 处理所有URL请求 (不仅限于链接激活类型)
                     let components = URLComponents(url: url, resolvingAgainstBaseURL: false)
                     if components?.scheme == "http" || components?.scheme == "https" {
                         NSWorkspace.shared.open(url)
-                        decisionHandler(.cancel)
-                        return
+                        return (.cancel, preferences)
                     }
                 }
             }
-            decisionHandler(.allow)
+            return (.allow, preferences)
         }
         
-//        func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
-//            if navigationAction.navigationType == .linkActivated {
-//                if let url = navigationAction.request.url {
-//                    let components = URLComponents(url: url, resolvingAgainstBaseURL: false)
-//                    if components?.scheme == "http" || components?.scheme == "https" {
-//                        NSWorkspace.shared.open(url)
-//                        decisionHandler(.cancel)
-//                        return
-//                    }
-//                }
-//            }
-//            decisionHandler(.allow)
-//        }
     }
 }
 
@@ -202,13 +265,17 @@ struct WebUIViewWithSave: NSViewRepresentable {
     var html: String = ""
     var baseURLStr: String = ""
     
+    // 离线
     @Binding var savingDataTrigger: Bool
     @Binding var savingData: Data?
+    // markdown
+    @Binding var buildMarkdownTrigger: Bool
+    @Binding var buildString: String
     
     @Binding var isStop: Bool
 
     func makeCoordinator() -> Coordinator {
-        Coordinator()
+        return Coordinator()
     }
     
     func makeNSView(context: Context) -> some WKWebView {
@@ -230,24 +297,22 @@ struct WebUIViewWithSave: NSViewRepresentable {
             savingDataTrigger = false
         }
         
+        if buildMarkdownTrigger == true {
+            nsView.handleMarkdownConversion { markdownContent in
+                if let content = markdownContent {
+                    self.buildString += content
+                }
+            }
+            buildMarkdownTrigger = false
+        }
+        
         if isStop == true {
             return
         }
         
-        if savingData != nil {
-            if let data = savingData {
-                nsView.load(data, mimeType: "application/x-webarchive", characterEncodingName: "utf-8", baseURL: SMFile.getDocumentsDirectory())
-                isStop = true
-            }
-        } else {
-            if let url = URL(string: urlStr) {
-                let r = URLRequest(url: url)
-                nsView.load(r)
-                isStop = true
-            }
+        nsView.loadSavedOrRemoteContent(savingData: savingData, urlStr: urlStr) {
+            isStop = true
         }
-        
-        
     }
     
     class Coordinator: NSObject, WKNavigationDelegate {
@@ -267,6 +332,117 @@ struct WebUIViewWithSave: NSViewRepresentable {
         }
     } // end Coordinator
 }
+
+#elseif os(iOS)
+// MARK: - WebView iOS
+struct WebUIView: UIViewRepresentable {
+    var urlStr: String = ""
+    var html: String = ""
+    var baseURLStr: String = ""
+    
+    func makeCoordinator() -> Coordinator {
+        return Coordinator()
+    }
+    
+    func makeUIView(context: Context) -> WKWebView {
+        let webView = WKWebView()
+        webView.navigationDelegate = context.coordinator
+        return webView
+    }
+    
+    func updateUIView(_ uiView: WKWebView, context: Context) {
+        uiView.loadContent(urlStr: urlStr, html: html, baseURLStr: baseURLStr)
+    }
+    
+    class Coordinator: NSObject, WKNavigationDelegate {
+        func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
+            if navigationAction.navigationType == .linkActivated {
+                if let url = navigationAction.request.url {
+                    let components = URLComponents(url: url, resolvingAgainstBaseURL: false)
+                    if components?.scheme == "http" || components?.scheme == "https" {
+                        UIApplication.shared.open(url)
+                        decisionHandler(.cancel)
+                        return
+                    }
+                }
+            }
+            decisionHandler(.allow)
+        }
+    }
+}
+
+struct WebUIViewWithSave: UIViewRepresentable {
+    var urlStr: String = ""
+    var html: String = ""
+    var baseURLStr: String = ""
+    
+    @Binding var savingDataTrigger: Bool
+    @Binding var savingData: Data?
+    
+    // markdown
+    @Binding var buildMarkdownTrigger: Bool
+    @Binding var buildString: String
+    
+    @Binding var isStop: Bool
+    
+    func makeCoordinator() -> Coordinator {
+        return Coordinator()
+    }
+    
+    func makeUIView(context: Context) -> WKWebView {
+        let webView = WKWebView()
+        webView.navigationDelegate = context.coordinator
+        return webView
+    }
+    
+    func updateUIView(_ uiView: WKWebView, context: Context) {
+        if savingDataTrigger == true {
+            uiView.createWebArchiveData { result in
+                do {
+                    let data = try result.get()
+                    savingData = data
+                } catch {
+                    print("创建 webarchivedata 数据失败，\(error)")
+                }
+            }
+            savingDataTrigger = false
+        }
+        
+        if buildMarkdownTrigger == true {
+            uiView.handleMarkdownConversion { markdownContent in
+                if let content = markdownContent {
+                    self.buildString += content
+                }
+            }
+            buildMarkdownTrigger = false
+        }
+        
+        if isStop == true {
+            return
+        }
+        
+        uiView.loadSavedOrRemoteContent(savingData: savingData, urlStr: urlStr) {
+            isStop = true
+        }
+    }
+    
+    class Coordinator: NSObject, WKNavigationDelegate {
+        func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
+            if navigationAction.navigationType == .linkActivated {
+                if let url = navigationAction.request.url {
+                    let components = URLComponents(url: url, resolvingAgainstBaseURL: false)
+                    if components?.scheme == "http" || components?.scheme == "https" {
+                        UIApplication.shared.open(url)
+                        decisionHandler(.cancel)
+                        return
+                    }
+                }
+            }
+            decisionHandler(.allow)
+        }
+    }
+}
+#endif
 
 // MARK: - Time
 struct GitHubApiTimeView: View {
